@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  min-width: 100%;
   min-height: 500px;
   height: 100%;
   /* background-color: blue; */
@@ -27,7 +27,7 @@
   align-items: center;
 }
 
-.categories {
+.categories, .amount-items {
   background-color: #f5b461; /* Green */
   border: none;
   color: white;
@@ -46,10 +46,36 @@
 }
 
 
-.categories:hover {
+.categories:hover, .amount-items:hover {
   background-color: #9ad3bc;
   color: white;
 }
+
+.amount-container {
+  margin: 10px auto;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  color: #bbbfca
+  /* background-color: hotpink; */
+}
+
+.amount-container > h2 {
+  font-weight: 700;
+}
+
+.amount-list {
+  font-weight: 200;
+}
+
+.amount {
+  padding: 5px;
+}
+
+
+
 
 @media only screen and (max-width: 800px) {
   .categories{

@@ -4,7 +4,7 @@ import './stylesheets/App.css';
 import QUESTIONS from './Apprentice_TandemFor400_Data.json';
 import DisplayAnswers from "./components/display_answers"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faBrain } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faBrain, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons'
 import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons'
 import './stylesheets/categories.css';
@@ -12,7 +12,7 @@ const axios = require("axios");
 
 
 const CATAGORIES = [
-  { "id": 1, "category": "Tandem: Random"},
+  { "id": 1, "category": "Tandem: Random (Max: 21)"},
   { "id": 9, "category": "General Knowledge"},
   { "id": 10, "category": "Entertainment: Books"},
   { "id": 11, "category": "Entertainment: Films"},
@@ -29,6 +29,8 @@ const CATAGORIES = [
   { "id": 26, "category": "Celebrities"},
 ]
 
+const QUESTIONS_AMOUNT = [10, 20, 30, 40, 50]
+
 class App extends React.Component {
 
   constructor(props) {
@@ -36,6 +38,7 @@ class App extends React.Component {
 
     this.state = {
       categoryId: 1,
+      questionAmount: 10,
       questions: [],
       categorySelection: true,
       highScore: parseInt(localStorage.getItem('triviaScore') || 0),
@@ -47,13 +50,14 @@ class App extends React.Component {
   // }
 
   fetchQuestions = () => {
-    const { categoryId } = this.state; 
+    const { categoryId, questionAmount } = this.state; 
     if ( categoryId === 1) {
       const shuffled = QUESTIONS.sort(() => 0.5 - Math.random());
-      let tenQuestion = shuffled.slice(0, 10);
+      let amount = questionAmount >= 21 ? 21 : questionAmount;
+      let tenQuestion = shuffled.slice(0, amount);
       this.setState({questions: tenQuestion})
     } else {
-      axios.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}`).then((data) => {
+      axios.get(`https://opentdb.com/api.php?amount=${questionAmount}&category=${categoryId}`).then((data) => {
         this.setState({ questions: data.data.results });
       });
     }
@@ -69,6 +73,9 @@ class App extends React.Component {
           <h2>{question.question}</h2>
         </div>
         <DisplayAnswers questions={questions} idx={idx} handleAnswerClk={this.handleAnswerClk} />
+        <div className="quit-container">
+          <FontAwesomeIcon id="trash" title="Start Over" icon={faTrash} onClick={() => this.setState({ categorySelection: true})}/>
+        </div>
       </div>
     );
   };
@@ -165,10 +172,18 @@ class App extends React.Component {
       gameOver: false,
       score: 0,
       idx: 0,
+      questionAmount: 10,
+    })
+  }
+
+  handleRadioClick = (e) => {
+    this.setState({
+      questionAmount: parseInt(e.currentTarget.value)
     })
   }
 
   categorySelection = () => {
+    const { questionAmount } = this.state;
     return (
       <div className="category-container">
         <h2 id="category-title">Select A Category to Begin</h2>
@@ -185,6 +200,23 @@ class App extends React.Component {
             })
           }
         </ul>
+        <div className="amount-container">
+          <h2>How many questions would you like?</h2>
+          <div className="amount-list">
+            { QUESTIONS_AMOUNT.map( (num, idx) => {
+              return (
+                <label>
+                  <input type="radio" name="amount"
+                    value={num}
+                    checked={questionAmount === num}
+                    onChange={ this.handleRadioClick } 
+                  />  
+                  <span class="amount">{num}</span>
+                </label>
+              )
+            }) }
+          </div>
+        </div>
       </div>
     );
 };
