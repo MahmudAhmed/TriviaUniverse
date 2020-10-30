@@ -1,23 +1,16 @@
-
-
-function shuffleAnswers(array){
-  array.sort((a, b) => a - b);
-};
-
-function DisplayAnswers({questions, idx}) {
+function DisplayAnswers({questions, idx, handleAnswerClk}) {
     const question = questions[idx];
     const choices = question.incorrect_answers.slice();
     choices.push(question.correct_answer);
-    shuffleAnswers(choices);
-    
+    choices.sort(() => 0.5 - Math.random());
     return (
       <div className="answers-container">
         <ul className="choices-ul">
-          {choices.map((option, idx) => {
-            <li>
-              <button>{option}</button>
+          {choices.map((option) => (
+            <li className="choices-li">
+              <button className="answer-btns" onClick={() => handleAnswerClk(questions, idx, option)}>{option}</button>
             </li>
-          })}
+          ))}
         </ul>
       </div>
     );

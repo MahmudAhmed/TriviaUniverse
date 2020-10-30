@@ -1,0 +1,148 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: paleturquoise;
+  overflow: hidden;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+  background-color: teal;
+  margin: 10px auto;
+}
+
+
+.title-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  font-weight: bold;
+  color: white;
+  box-sizing: border-box;
+}
+
+.left-title-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+#brain {
+  margin-right: 10px;
+}
+
+.right-title-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.right-title-container > div {
+  margin: 0 10px;
+}
+
+#star {
+  color: red;
+}
+
+#score {
+  margin: 0 5px;
+}
+
+.middle-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-container{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.the-question {
+  padding: 10px;
+  margin-bottom: 50px;
+  font-size: 35px;
+}
+
+.choices-ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.answer-btns {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.choices-li:hover .answer-btns {
+  background-color: white;
+  color: #4CAF50;
+}
+
+.game-over-container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* background-color: blue; */
+  color: paleturquoise;
+}
+
+#game-over-text {
+  margin: 20px auto;
+  font-size: 35px;
+}
+
+#restart {
+  font-size: 50px;
+  cursor: pointer;
+}
+
+#restart:hover {
+  font-size: 50px;
+  color: black;
+  cursor: pointer;
+}
+
+.stats-container {
+  margin: 20px auto;
+}
+
+#stats-score {
+ margin: 10px;
+}
