@@ -15,6 +15,7 @@
   font-size: 35px;
   font-weight: bold;
   text-align: center;
+  color: #9ad3bc;
 }
 
 .category-list {
@@ -27,11 +28,27 @@
 }
 
 .categories {
-  background-color: white;
-  padding: 10px 5px;
-  margin: 5px;
+  background-color: #f5b461; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
   text-align: center;
-  /* display: inline-block; */
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.categories:hover {
+  background-color: #9ad3bc;
+  color: white;
 }
 
 @media only screen and (max-width: 800px) {

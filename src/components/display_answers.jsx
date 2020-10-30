@@ -6,8 +6,8 @@ function DisplayAnswers({questions, idx, handleAnswerClk}) {
     return (
       <div className="answers-container">
         <ul className="choices-ul">
-          {choices.map((option) => (
-            <li className="choices-li">
+          {choices.map((option, key) => (
+            <li key={key} className="choices-li">
               <button className="answer-btns" onClick={() => handleAnswerClk(questions, idx, option)}>{option}</button>
             </li>
           ))}

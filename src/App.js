@@ -6,29 +6,57 @@ import DisplayAnswers from "./components/display_answers"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faBrain } from '@fortawesome/free-solid-svg-icons'
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons'
-import CategorySelection from './components/category_selection';
+import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons'
+import './stylesheets/categories.css';
+const axios = require("axios");
+
+
+const CATAGORIES = [
+  { "id": 1, "category": "Tandem: Random"},
+  { "id": 9, "category": "General Knowledge"},
+  { "id": 10, "category": "Entertainment: Books"},
+  { "id": 11, "category": "Entertainment: Films"},
+  { "id": 12, "category": "Entertainment: Music"},
+  { "id": 14, "category": "Entertainment: Television"},
+  { "id": 15, "category": "Entertainment: Video Games"},
+  { "id": 17, "category": "Entertainment: Science & Nature"},
+  { "id": 20, "category": "Mythology"},
+  { "id": 21, "category": "Sports"},
+  { "id": 22, "category": "Geography"},
+  { "id": 23, "category": "History"},
+  { "id": 24, "category": "Politics"},
+  { "id": 25, "category": "Art"},
+  { "id": 26, "category": "Celebrities"},
+]
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      questions: QUESTIONS,
-      idx: 0,
-      score: 0,
-      gameOver: false,
+      categoryId: 1,
+      questions: [],
       categorySelection: true,
+      highScore: parseInt(localStorage.getItem('triviaScore') || 0),
     };
   }
 
-  componentDidMount = () => {
-    this.fetchQuestions();
-  }
+  // componentDidMount = () => {
+  //   this.fetchQuestions();
+  // }
 
   fetchQuestions = () => {
-    const shuffled = QUESTIONS.sort(() => 0.5 - Math.random());
-    let tenQuestion = shuffled.slice(0, 10);
-    this.setState({questions: tenQuestion})
+    const { categoryId } = this.state; 
+    if ( categoryId === 1) {
+      const shuffled = QUESTIONS.sort(() => 0.5 - Math.random());
+      let tenQuestion = shuffled.slice(0, 10);
+      this.setState({questions: tenQuestion})
+    } else {
+      axios.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}`).then((data) => {
+        this.setState({ questions: data.data.results });
+      });
+    }
   }
 
   displayQuestions = () => {
@@ -47,9 +75,11 @@ class App extends React.Component {
 
   handleAnswerClk = (questions, idx, choice) => {
     const question = questions[idx];
+    debugger
     let {
       score,
       gameOver,
+      highScore,
     } = this.state;
 
     if (question.correct_answer === choice) {
@@ -59,6 +89,10 @@ class App extends React.Component {
     }
     if (idx + 1 >= questions.length) {
       gameOver = true;
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('triviaScore', highScore)
+      }
     } else {
       idx++;
     }
@@ -66,7 +100,8 @@ class App extends React.Component {
     this.setState({
       score,
       idx,
-      gameOver
+      gameOver, 
+      highScore
     });
   };
 
@@ -95,7 +130,7 @@ class App extends React.Component {
           }
         </div>
         <div className="middle-container">
-          { categorySelection ? <CategorySelection /> : !gameOver ? this.displayQuestions() : this.displayGameOver() } 
+          { categorySelection ? this.categorySelection() : ( !gameOver ? this.displayQuestions() : this.displayGameOver()) } 
         </div>            
       </div>
     )
@@ -104,13 +139,21 @@ class App extends React.Component {
   displayGameOver = () => {
     return (
     <div className="game-over-container">
-      <h2 id="game-over-text">Game Over!</h2>
+      <h2 id="game-over-text">Play Again!</h2>
       <div className="replay-container">
-        <FontAwesomeIcon id="restart" title="Play Again" icon={faPlayCircle} onClick={ () => this.newGame()}/>
+        <FontAwesomeIcon id="restart" title="Play Again" icon={faPlayCircle} onClick={ () => this.setState({ categorySelection: true})}/>
       </div>
       <div className="stats-container">
         <span>You Scored:</span>
         <span id="stats-score">{this.state.score}</span>
+        {
+          this.state.highScore > 0 ? (
+            <div>
+              <span>Your Highest Score:</span>
+              <span id="stats-score">{this.state.highScore}</span>
+            </div>
+          ) : ""
+        }
       </div>
     </div>
     );
@@ -125,12 +168,37 @@ class App extends React.Component {
     })
   }
 
+  categorySelection = () => {
+    return (
+      <div className="category-container">
+        <h2 id="category-title">Select A Category to Begin</h2>
+        <ul className="category-list">
+          {
+            CATAGORIES.map( (topic) => {
+              return (
+              <li className="categories" onClick={ () => {
+                this.setState({ categorySelection: false, categoryId: topic.id}, () => this.newGame());              
+              }}>
+                {topic.category}
+              </li>
+              )
+            })
+          }
+        </ul>
+      </div>
+    );
+};
+
 
   render() {
-    const { categorySelection } = this.state; 
     return (
       <div className="main-container">
        {this.displayGameScreen()}
+       <div class="social-icon-container">
+               <a href="https://www.linkedin.com/in/mahmud-ahmed/" target="_black"><FontAwesomeIcon className="social-icons" icon={faLinkedin} /></a>
+               <a href="https://github.com/mahmudahmed" target="_black"><FontAwesomeIcon className="social-icons" icon={faGithub} /></a>
+               <a href="https://medium.com/@moe.purplefox" target="_black"><FontAwesomeIcon className="social-icons" icon={faMedium} /></a>
+        </div>
       </div>
     )
   }
