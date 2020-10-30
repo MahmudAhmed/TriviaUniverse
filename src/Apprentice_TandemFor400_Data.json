@@ -1,0 +1,112 @@
+[
+  {
+    "question": "What was Tandem previous name?",
+    "incorrect_answers": ["Tandem", "Burger Shack", "Extraordinary Humans"],
+    "correct_answer": "Devmynd"
+  },
+  {
+    "question": "In Shakespeare's play Julius Caesar, Caesar's last words were...",
+    "incorrect_answers": ["Iacta alea est!", "Vidi, vini, vici", "Aegri somnia vana"],
+    "correct_answer": "Et tu, Brute?"
+  },
+  {
+    "question": "A group of tigers are referred to as:",
+    "incorrect_answers": ["Chowder", "Pride", "Destruction"],
+    "correct_answer": "Ambush"
+  },
+  {
+    "question": "What is the top speed an average cat can travel?",
+    "incorrect_answers": ["42 mph", "13 mph", "9 mph"],
+    "correct_answer": "31 mph"
+  },
+  {
+    "question": "A cat can jump to _____ times its own height:",
+    "incorrect_answers": ["3", "9", "7"],
+    "correct_answer": "5"
+  },
+  {
+    "question": "What is the only letter that doesn't appear in a US state name?",
+    "incorrect_answers": ["M", "Z", "X"],
+    "correct_answer": "Q"
+  },
+  {
+    "question": "What is the name for a cow-bison hybrid?",
+    "incorrect_answers": ["Cowson", "Bicow", "Mooson"],
+    "correct_answer": "Beefalo"
+  },
+  {
+    "question": "What is the largest freshwater lake in the world?",
+    "incorrect_answers": ["Lake Baikal", "Lake Michigan", "Lake Victoria"],
+    "correct_answer": "Lake Superior"
+  },
+
+  {
+    "question": "In a website address bar, what does WWW stand for?",
+    "incorrect_answers": ["Wild Wild West", "War World Web"],
+    "correct_answer": "World Wide Web"
+  },
+  {
+    "question": "In a game of bingo, what number is represented by the name two little ducks?",
+    "incorrect_answers": ["20", "55", "77"],
+    "correct_answer": "22"
+  },
+  {
+    "question": "According to Greek mythology, who was the first woman on Earth?",
+    "incorrect_answers": ["Lilith", "Eve", "Hera"],
+    "correct_answer": "Pandora"
+  },
+  {
+    "question": "In which European city would you find Orly airport?",
+    "incorrect_answers": ["London", "Belgium", "Munich"],
+    "correct_answer": "Paris"
+  },
+  {
+    "question": "Where would you find the Sea of Tranquility?",
+    "incorrect_answers": ["California", "Siberia", "China"],
+    "correct_answer": "The Moon"
+  },
+  {
+    "question": "Which artist painted 'Girl with a Pearl Earrin'?",
+    "incorrect_answers": ["Van Gogh", "Picasso", "Da Vinci"],
+    "correct_answer": "Vermeer"
+  },
+  {
+    "question": "What is the official name for the 'hashtag' symbol?",
+    "incorrect_answers": ["Number sign", "Hash Sign", "Pound"],
+    "correct_answer": "Octothorpe"
+  },
+  {
+    "question": "Not American at all, where is apple pie from?",
+    "incorrect_answers": ["Japan", "Ethiopia", "Canada"],
+    "correct_answer": "England"
+  },
+  {
+    "question": "What is the national animal of Scotland?",
+    "incorrect_answers": ["Bear", "Rabbit", "Seal"],
+    "correct_answer": "Unicorn"
+  },
+  {
+    "question": "Where in the world is the only place where Canada is *due south*",
+    "incorrect_answers": ["Alaska", "Russia", "Washington"],
+    "correct_answer": "Detroit"
+  },
+  {
+    "question": "Approximately how many grapes go into a bottle of wine?",
+    "incorrect_answers": ["500", "200", "1000"],
+    "correct_answer": "700"
+  },
+  {
+    "question": "How much does a US One Dollar Bill cost to make?",
+    "incorrect_answers": ["$0.25", "$1", "$5"],
+    "correct_answer": "$0.05"
+  },
+  {
+    "question": "The Vatican bank has the only ATM in the world that allows users to do what?",
+    "incorrect_answers": [
+      "Receive withdrawls in rosary beads",
+      "Vote for the Pope",
+      "Purchase indulgences"
+    ],
+    "correct_answer": "Perform transactions in Latin"
+  }
+]
