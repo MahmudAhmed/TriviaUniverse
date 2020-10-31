@@ -79,8 +79,8 @@ class App extends React.Component {
     return (
       <div className="question-container">
         <div className="question-details">
-          <h4>Category: "{question.category}"</h4>
-          <h4>Difficulty: "{question.difficulty}"</h4>
+          <h4 id="category">Category: "{question.category ? question.category : "Questions by Tandem"}"</h4>
+          <h4 id="difficulty">Difficulty: "{question.difficulty ? question.difficulty : "n/a"}"</h4>
         </div>
         <div className="the-question">
           <h2 dangerouslySetInnerHTML={{ __html: `${question.question}` }}></h2>
@@ -215,10 +215,7 @@ class App extends React.Component {
   };
 
   handleDifficultySelection = (e) => {
-    this.setState(
-      {
-        difficulty: e.currentTarget.value
-      });
+    this.setState({difficulty: e.currentTarget.value});
   };
 
   categorySelection = () => {
