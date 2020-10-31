@@ -15,7 +15,7 @@ Choose a category in which to play the Trivia Quiz from General Knowledge, Sport
 * Babel
 
 <p align="center">
-  <img width="400" height="300" src="./public/2.png">
+  <img width="500" height="600" src="./public/2.png">
 </p>
 
 ## Installation 
@@ -39,9 +39,11 @@ npm run start
 * Difficulty Selection
 * Question Amount Selection
 * Optimized for all screen sizes
+* Quit in middle of the Game
+* Point System
 
 <p align="center">
-  <img width="400" height="300" src="./public/3.png">
+  <img width="500" height="600" src="./public/3.png">
 </p>
 
 ## Future Endeavors
