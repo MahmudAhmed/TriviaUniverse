@@ -86,6 +86,17 @@ body {
   position: relative;
 }
 
+.question-details {
+  min-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px
+  /* flex-direction: column; */
+
+}
+
 .the-question {
   padding: 10px;
   margin-bottom: 50px;
@@ -180,17 +191,6 @@ body {
 .social-icons:hover {
   color: white;
 }
-
-/* .quit-container {
-  width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
-  display: flex;
-  justify-items: flex-end;
-  align-items: flex-end;
-  background-color: lime;
- 
-} */
 
 #trash {
   position: absolute;

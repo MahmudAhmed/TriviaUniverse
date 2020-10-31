@@ -33,7 +33,6 @@ const CATAGORIES = [
 ];
 
 const QUESTIONS_AMOUNT = [10, 20, 30, 40, 50];
-const DIFFICULTIES = ["easy", "medium", "hard"];
 
 class App extends React.Component {
   constructor(props) {
@@ -68,8 +67,6 @@ class App extends React.Component {
           }`
         )
         .then((data) => {
-          debugger;
-          console.log(data.data.results);
           this.setState({ questions: data.data.results });
         });
     }
@@ -81,6 +78,10 @@ class App extends React.Component {
     if (!question) return null;
     return (
       <div className="question-container">
+        <div className="question-details">
+          <h4>Category: "{question.category}"</h4>
+          <h4>Difficulty: "{question.difficulty}"</h4>
+        </div>
         <div className="the-question">
           <h2 dangerouslySetInnerHTML={{ __html: `${question.question}` }}></h2>
         </div>
@@ -103,11 +104,12 @@ class App extends React.Component {
 
   handleAnswerClk = (questions, idx, choice) => {
     const question = questions[idx];
-    debugger;
     let { score, gameOver, highScore } = this.state;
 
     if (question.correct_answer === choice) {
-      score += 1;
+      if (question.difficulty === "hard") score += 8;
+      else if (question.difficulty === "medium") score += 6;
+      else score += 2;
     } else {
       score--;
     }
@@ -216,9 +218,7 @@ class App extends React.Component {
     this.setState(
       {
         difficulty: e.currentTarget.value
-      },
-      () => console.log(this.state.difficulty)
-    );
+      });
   };
 
   categorySelection = () => {
@@ -263,43 +263,66 @@ class App extends React.Component {
           </div>
         </div>
         {this.displayDifficulty()}
+        {this.displayInstructions()}
       </div>
     );
   };
 
   displayDifficulty = () => {
     return (
-      <div>
-        <label for="difficulty">Choose a difficulty:</label>
+      <div className="difficulty-container">
+        {/* <label for="difficulty">Choose a difficulty:</label> */}
         <select
           name="dificulty"
           id="difficulty-list"
           onChange={this.handleDifficultySelection}
         >
-          <option value="">Any Difficulty</option>
+          <option selected disabled>Choose a difficulty</option>
+          <option value="">Random (Default)</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </select>
+        
       </div>
     );
   };
+
+  displaySocial = () => {
+    return (
+      <div class="social-icon-container">
+        <a href="https://www.linkedin.com/in/mahmud-ahmed/" target="_black">
+          <FontAwesomeIcon className="social-icons" icon={faLinkedin} />
+        </a>
+        <a href="https://github.com/mahmudahmed" target="_black">
+          <FontAwesomeIcon className="social-icons" icon={faGithub} />
+        </a>
+        <a href="https://medium.com/@moe.purplefox" target="_black">
+          <FontAwesomeIcon className="social-icons" icon={faMedium} />
+        </a>
+      </div>
+    )
+  }
+
+  displayInstructions = () => {
+    return (
+      <div className={"instruction-container"}>
+        <h2>Scoring:</h2>
+        <ul id="scoring">
+          <li className="scoring-li">Easy => <span className="plus">+2pts</span> </li>
+          <li className="scoring-li">Medium => <span className="plus">+4pts</span> </li>
+          <li className="scoring-li">Hard => <span className="plus">+8pts</span> </li>
+        </ul>
+        <p id="warning-wrong">Wrong answers will cost you <span className="minus">-1pt</span></p>
+      </div>
+    )
+  }
 
   render() {
     return (
       <div className="main-container">
         {this.displayGameScreen()}
-        <div class="social-icon-container">
-          <a href="https://www.linkedin.com/in/mahmud-ahmed/" target="_black">
-            <FontAwesomeIcon className="social-icons" icon={faLinkedin} />
-          </a>
-          <a href="https://github.com/mahmudahmed" target="_black">
-            <FontAwesomeIcon className="social-icons" icon={faGithub} />
-          </a>
-          <a href="https://medium.com/@moe.purplefox" target="_black">
-            <FontAwesomeIcon className="social-icons" icon={faMedium} />
-          </a>
-        </div>
+        {this.displaySocial()}
       </div>
     );
   }
