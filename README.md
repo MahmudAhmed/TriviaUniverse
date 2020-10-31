@@ -7,6 +7,8 @@
 </p>
 Choose a category in which to play the Trivia Quiz from General Knowledge, Sports, Entertainment, History, Music, Geography and Science.
 
+## Live
+Play the game live [here!](https://mahmudahmed.github.io/Bull-E-Season/)
 
 ## Technologies
 * Frontend: JavaScript/React
