@@ -14,6 +14,9 @@ Choose a category in which to play the Trivia Quiz from General Knowledge, Sport
 * Webpack
 * Babel
 
+<p align="center">
+  <img width="400" height="300" src="./public/2.png">
+</p>
 
 ## Installation 
 
@@ -38,7 +41,7 @@ npm run start
 * Optimized for all screen sizes
 
 <p align="center">
-  <img width="400" height="300" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/auth.gif">
+  <img width="400" height="300" src="./public/3.png">
 </p>
 
 ## Future Endeavors
