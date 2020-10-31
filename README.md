@@ -41,6 +41,7 @@ npm run start
 * Optimized for all screen sizes
 * Quit in middle of the Game
 * Point System
+* Local highscore storage
 
 <p align="center">
   <img width="100%" height="500" src="./public/3.png">
