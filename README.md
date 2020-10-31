@@ -3,7 +3,7 @@
 
 ## Description
 <p align="center">
-  <img width="600" height="500" src="./public/1.png">
+  <img width="100%" height="500" src="./public/1.png">
 </p>
 Choose a category in which to play the Trivia Quiz from General Knowledge, Sports, Entertainment, History, Music, Geography and Science.
 
