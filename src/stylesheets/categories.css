@@ -168,14 +168,4 @@ select {
     display: block;
     width: 100%;
   }
-
-  .question-details {
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .question-details > h4 {
-    margin: 5px;
-  }
 } 

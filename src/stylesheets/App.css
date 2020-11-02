@@ -206,5 +206,26 @@ body {
   right: 10px;
   bottom: 10px;
   font-size: 30px;
-
 }
+
+@media only screen and (max-width: 800px) {
+  .middle-container {
+    height: 100vw;
+    width: 100vw;
+  }
+
+
+  .question-details {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .question-details > h4 {
+    margin: 5px;
+  }
+
+  .game-container {
+    width: 100%;
+  }
+} 
